@@ -1,10 +1,25 @@
 #!/bin/bash
-CONTRACT_NAME=hello
-ACCOUNT_NAME=hello
+source $(dirname $0)/setting.sh
+# Use build dir and account name here
+#BUILD_DIR=build
+#ACCOUNT_NAME=hello
 if [ $# -eq 2 ]; then
-	CONTRACT_NAME=$1
+	BUILD_DIR=$1
 	ACCOUNT_NAME=$2
 fi 
+if [ $# -eq 1 ]; then
+	ACCOUNT_NAME=$1
+fi
 
+echo "Strat to deploy built result in ./$BUILD_DIR to the account $ACCOUNT_NAME"
 #cleos set contract hello ~/test/eos-contract-helloworld/hello -p hello@active
-cleos set contract $CONTRACT_NAME $(dirname $0)/$CONTRACT_NAME -p $ACCOUNT_NAME@active
+cleos set contract $ACCOUNT_NAME $(dirname $0)/$BUILD_DIR -p $ACCOUNT_NAME@active
+
+
+# $ createAccount.sh user1
+# $ createAccount.sh test2
+# $ ./build.sh
+# $ ./deploy.sh
+# deploy to account user1 in default. 
+# To trigger user1 hi function by the test2 account
+# cleos push action user1 hi '["user"]' -p test2@active
