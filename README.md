@@ -7,6 +7,6 @@ $ cd ~/
 $ git clone https://github.com/milochen0418/eos-script  
 ## go to the project folder and call use-eos-script.sh
 $ cd YOUR_EOS_CONTRACT_HELLOWORLD_DIR
-$ source use-eos-script.sh
+$ source ~/eos-script/nodeos/use-eos-script.sh
 Right now, you can use scripts in the eos-script project when you develope project 
 
